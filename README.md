@@ -87,11 +87,6 @@ cd codeceptjs-api-dogs
 npm install
 ```
 
-### 3. Execute o setup completo
-```bash
-npm run setup
-```
-
 ## 🚀 Como Usar
 
 ### Executar todos os testes
@@ -127,11 +122,6 @@ npm run allure-open
 ### Servir relatório Allure
 ```bash
 npm run allure-server
-```
-
-### Limpar resultados anteriores
-```bash
-npm run clean
 ```
 
 ### Formatar código
