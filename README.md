@@ -21,7 +21,8 @@ Uma coleção robusta e bem estruturada de testes automatizados para validar tod
 - [Documentação da API](#documentação-da-api)
 - [Scripts Disponíveis](#scripts-disponíveis)
 - [Cenários de Teste](#cenários-de-teste)
-- [Relatórios](#relatórios)
+- [Allure Reports - Relatórios Visuais](#allure-reports---relatórios-visuais)
+- [Relatórios Tradicionais](#relatórios-tradicionais)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 
@@ -35,6 +36,7 @@ Este projeto foi desenvolvido para demonstrar uma suíte de testes automatizados
 - ✅ Validação de URLs e formatos
 - ✅ Testes de múltiplas requisições
 - ✅ Verificação de breeds específicas
+- 📊 Relatórios visuais com **Allure Framework**
 
 ## 🔍 Funcionalidades Testadas
 
@@ -58,6 +60,8 @@ Este projeto foi desenvolvido para demonstrar uma suíte de testes automatizados
 |------------|--------|-----------|
 | [Node.js](https://nodejs.org/) | ≥16.0.0 | Ambiente de execução JavaScript |
 | [CodeceptJS](https://codecept.io/) | ^3.5.14 | Framework de testes BDD |
+| [Allure Framework](https://allurereport.org/) | ^3.4.1 | Geração de relatórios visuais |
+| [Allure CommandLine](https://github.com/allure-framework/allure2) | ^2.34.1 | CLI para relatórios Allure |
 | [Faker.js](https://fakerjs.dev/) | ^8.4.1 | Geração de dados de teste |
 | [Prettier](https://prettier.io/) | ^3.2.5 | Formatação de código |
 | [Rosie](https://github.com/rosiejs/rosie) | ^2.1.1 | Factory para objetos de teste |
@@ -103,6 +107,26 @@ npm run test:verbose
 ### Executar em modo debug
 ```bash
 npm run test:debug
+```
+
+### Executar testes completos com Allure
+```bash
+npm run test-all
+```
+
+### Gerar relatório Allure
+```bash
+npm run allure-generate
+```
+
+### Abrir relatório Allure
+```bash
+npm run allure-open
+```
+
+### Servir relatório Allure
+```bash
+npm run allure-server
 ```
 
 ### Limpar resultados anteriores
@@ -152,12 +176,12 @@ https://dog.ceo/api
 | **test** | `npm test` | Executa todos os testes com steps |
 | **test:verbose** | `npm run test:verbose` | Executa testes com saída detalhada |
 | **test:debug** | `npm run test:debug` | Executa testes em modo debug |
+| **test-all** | `npm run test-all` | Executa testes e gera relatório Allure |
+| **allure-generate** | `npm run allure-generate` | Gera relatório Allure a partir dos resultados |
+| **allure-open** | `npm run allure-open` | Abre o relatório Allure no navegador |
+| **allure-server** | `npm run allure-server` | Inicia servidor local para relatório Allure |
 | **format** | `npm run format` | Formata código usando Prettier |
 | **format:check** | `npm run format:check` | Verifica formatação do código |
-| **lint** | `npm run lint` | Executa verificação de linting |
-| **clean** | `npm run clean` | Remove arquivos de output |
-| **setup** | `npm run setup` | Instala dependências e roda testes |
-| **docs** | `npm run docs` | Exibe informações da documentação |
 
 ## 🧪 Cenários de Teste
 
@@ -185,20 +209,109 @@ https://dog.ceo/api
 - Verificação de breeds conhecidas
 - Análise de performance de resposta
 
-## 📈 Relatórios
+## 📊 Allure Reports - Relatórios Visuais
 
-Os resultados dos testes são salvos na pasta `output/` e incluem:
+Este projeto utiliza o **Allure Framework** para gerar relatórios visuais ricos e interativos dos resultados dos testes. O Allure oferece uma interface web moderna para análise detalhada dos testes executados.
+
+### 🎯 Resultados dos Testes
+
+![Allure Test Results](./allure-tests.png)
+
+**📈 Estatísticas Atuais dos Testes:**
+- ✅ **29 testes passaram** (100% de sucesso)
+- ❌ **0 testes falharam**
+- ⚠️ **0 testes quebrados**
+- ⏭️ **0 testes ignorados**
+- ⏱️ **Duração total:** ~11.5 segundos
+- 🏃 **Tempo mínimo:** 239ms
+- 🐌 **Tempo máximo:** 1.223s
+
+### 🚀 Como Usar o Allure
+
+#### 1. Executar testes e gerar relatório automaticamente
+```bash
+npm run test-all
+```
+
+#### 2. Gerar relatório manualmente
+```bash
+# Primeiro execute os testes
+npm test
+
+# Depois gere o relatório
+npm run allure-generate
+
+# Abra o relatório
+npm run allure-open
+```
+
+#### 3. Servir relatório localmente
+```bash
+npm run allure-server
+```
+
+### 📂 Estrutura dos Relatórios Allure
+
+```
+allure-results/           # Dados brutos dos testes
+├── 🔧 *.json            # Arquivos de resultado
+├── 📸 *.png             # Screenshots (se houver falhas)
+└── 📋 *.txt             # Logs e attachments
+
+allure-report/            # Relatório HTML gerado
+├── 📱 index.html        # Página principal
+├── 📊 widgets/          # Gráficos e estatísticas
+├── 📁 data/             # Dados estruturados
+└── 🎨 styles.css        # Estilização
+```
+
+### 🎨 Funcionalidades do Relatório Allure
+
+| Funcionalidade | Descrição |
+|----------------|-----------|
+| **📊 Dashboard** | Visão geral com gráficos e estatísticas |
+| **🔍 Suites** | Organização por arquivos de teste |
+| **📈 Trends** | Histórico de execuções (quando disponível) |
+| **🏷️ Categories** | Classificação de falhas por categoria |
+| **⏱️ Timeline** | Linha do tempo da execução |
+| **📋 Behaviors** | Agrupamento por funcionalidade |
+| **📦 Packages** | Estrutura por pacotes/diretórios |
+
+### 🔧 Configuração Allure
+
+O projeto está configurado com as seguintes opções no `codecept.conf.js`:
+
+```javascript
+plugins: {
+  allure: {
+    enabled: true,
+    require: 'allure-codeceptjs',
+    outputDir: './allure-results',
+  },
+  stepByStepReport: {
+    enabled: true,
+    screenshotsForAllureReport: true,
+    fullPageScreenshots: true,
+  }
+}
+```
+
+## 📈 Relatórios Tradicionais
+
+Além dos relatórios **Allure** (recomendados), os resultados dos testes também são salvos na pasta `output/` e incluem:
 
 - **Screenshots** em caso de falhas
-- **Logs detalhados** de execução
-- **Relatórios HTML** (quando configurado)
+- **Logs detalhados** de execução  
+- **Relatórios HTML** básicos
 - **Arquivos JSON** com dados de resposta
 
-### Visualizar Resultados
+### Visualizar Resultados Tradicionais
 ```bash
 # Os arquivos de saída estarão em:
 ./output/
 ```
+
+> 💡 **Recomendação:** Use os relatórios Allure para uma experiência muito mais rica e visual!
 
 ## 🤝 Contribuição
 

@@ -28,6 +28,22 @@ exports.config = {
     fakerTransform: {
       enabled: true,
     },
+    allure: {
+      enabled: true,
+      require: 'allure-codeceptjs',
+      outputDir: './output/allure-results',
+    },
+    stepByStepReport: {
+      enabled: true,
+      deleteSuccessful: false,
+      fullPageScreenshots: true,
+      screenshotsForAllureReport: true,
+      enableScreenshotDiffReports: true,
+      outputDir: './output',
+    },
+    screenshotOnFail: {
+      enabled: true,
+    },
   },
   name: 'dog-api-tests',
 };
