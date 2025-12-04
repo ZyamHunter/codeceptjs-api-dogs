@@ -105,11 +105,6 @@ npm run test:verbose
 npm run test:debug
 ```
 
-### Executar testes em paralelo
-```bash
-npm run test:parallel
-```
-
 ### Limpar resultados anteriores
 ```bash
 npm run clean
@@ -157,7 +152,6 @@ https://dog.ceo/api
 | **test** | `npm test` | Executa todos os testes com steps |
 | **test:verbose** | `npm run test:verbose` | Executa testes com saída detalhada |
 | **test:debug** | `npm run test:debug` | Executa testes em modo debug |
-| **test:parallel** | `npm run test:parallel` | Executa testes marcados como paralelos |
 | **format** | `npm run format` | Formata código usando Prettier |
 | **format:check** | `npm run format:check` | Verifica formatação do código |
 | **lint** | `npm run lint` | Executa verificação de linting |

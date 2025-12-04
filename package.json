@@ -7,7 +7,6 @@
     "test": "npx codeceptjs run --steps",
     "test:verbose": "npx codeceptjs run --verbose",
     "test:debug": "npx codeceptjs run --debug",
-    "test:parallel": "npx codeceptjs run --steps --grep '@parallel'",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,json,md}\"",
     "lint": "echo 'Linting completed'",
